@@ -1,0 +1,7 @@
+Sample	Uniquely mapped	Mapped to multiple loci	Mapped to too many loci	Unmapped: too short	Unmapped: other
+g1_01	47378.0	2485.0	56.0	20.0	61.0
+g1_02	47330.0	2567.0	43.0	5.0	55.0
+g1_03	47444.0	2437.0	50.0	10.0	59.0
+g3_01	46961.0	2911.0	57.0	14.0	57.0
+g3_02	47912.0	1959.0	65.0	10.0	54.0
+g3_03	48026.0	1874.0	43.0	10.0	47.0

@@ -1,0 +1,13 @@
+.	Basic Statistics	Per Base Sequence Quality	Per Sequence Quality Scores	Per Base Sequence Content	Per Sequence GC Content	Per Base N Content	Sequence Length Distribution	Sequence Duplication Levels	Overrepresented Sequences	Adapter Content
+g1_01-trimmed-pair1	1	1	1	0.25	1	1	0.5	1	0.5	1
+g1_01-trimmed-pair2	1	1	1	0.25	1	1	0.5	1	0.5	1
+g1_02-trimmed-pair1	1	1	1	0.25	1	1	0.5	1	0.5	1
+g1_02-trimmed-pair2	1	1	1	0.25	1	1	0.5	1	1	1
+g1_03-trimmed-pair1	1	1	1	0.25	1	1	0.5	1	1	1
+g1_03-trimmed-pair2	1	1	1	0.25	1	1	0.5	1	0.5	1
+g3_01-trimmed-pair1	1	1	1	0.25	1	1	0.5	1	0.5	1
+g3_01-trimmed-pair2	1	1	1	0.25	1	1	0.5	1	1	1
+g3_02-trimmed-pair1	1	1	1	0.25	1	1	0.5	1	1	1
+g3_02-trimmed-pair2	1	1	1	0.25	1	1	0.5	1	0.5	1
+g3_03-trimmed-pair1	1	1	1	0.25	0.5	1	0.5	1	0.5	1
+g3_03-trimmed-pair2	1	1	1	0.25	0.5	1	0.5	1	0.5	1

@@ -1,0 +1,3 @@
+[2025-05-21 18:25:42,032] multiqc.core.version_check                         [WARNING]  MultiQC Version v1.28 now available!
+[2025-05-21 18:25:42,033] multiqc.core.file_search                           [INFO   ]  Search path: /home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming
+[2025-05-21 18:25:42,472] multiqc.modules.fastqc.fastqc                      [INFO   ]  Found 24 reports

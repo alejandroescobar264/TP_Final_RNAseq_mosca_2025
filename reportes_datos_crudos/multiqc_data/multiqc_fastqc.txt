@@ -1,0 +1,13 @@
+Sample	Filename	File type	Encoding	Total Sequences	Sequences flagged as poor quality	Sequence length	%GC	total_deduplicated_percentage	avg_sequence_length	median_sequence_length	basic_statistics	per_base_sequence_quality	per_sequence_quality_scores	per_base_sequence_content	per_sequence_gc_content	per_base_n_content	sequence_length_distribution	sequence_duplication_levels	overrepresented_sequences	adapter_content
+g1_01_R1	g1_01_R1.fastq	Conventional base calls	Sanger / Illumina 1.9	50000.0	0.0	100.0	41.0	75.424	100.0	100	pass	pass	pass	fail	pass	pass	pass	pass	warn	pass
+g1_01_R2	g1_01_R2.fastq	Conventional base calls	Sanger / Illumina 1.9	50000.0	0.0	100.0	41.0	75.312	100.0	100	pass	pass	pass	fail	pass	pass	pass	pass	warn	pass
+g1_02_R1	g1_02_R1.fastq	Conventional base calls	Sanger / Illumina 1.9	50000.0	0.0	100.0	41.0	77.304	100.0	100	pass	pass	pass	fail	pass	pass	pass	pass	warn	pass
+g1_02_R2	g1_02_R2.fastq	Conventional base calls	Sanger / Illumina 1.9	50000.0	0.0	100.0	41.0	77.66	100.0	100	pass	pass	pass	fail	pass	pass	pass	pass	pass	pass
+g1_03_R1	g1_03_R1.fastq	Conventional base calls	Sanger / Illumina 1.9	50000.0	0.0	100.0	41.0	75.298	100.0	100	pass	pass	pass	fail	pass	pass	pass	pass	pass	pass
+g1_03_R2	g1_03_R2.fastq	Conventional base calls	Sanger / Illumina 1.9	50000.0	0.0	100.0	41.0	75.586	100.0	100	pass	pass	pass	fail	pass	pass	pass	pass	warn	pass
+g3_01_R1	g3_01_R1.fastq	Conventional base calls	Sanger / Illumina 1.9	50000.0	0.0	100.0	41.0	76.402	100.0	100	pass	pass	pass	fail	pass	pass	pass	pass	warn	pass
+g3_01_R2	g3_01_R2.fastq	Conventional base calls	Sanger / Illumina 1.9	50000.0	0.0	100.0	41.0	76.61200000000001	100.0	100	pass	pass	pass	fail	pass	pass	pass	pass	pass	pass
+g3_02_R1	g3_02_R1.fastq	Conventional base calls	Sanger / Illumina 1.9	50000.0	0.0	100.0	40.0	72.002	100.0	100	pass	pass	pass	fail	warn	pass	pass	pass	warn	pass
+g3_02_R2	g3_02_R2.fastq	Conventional base calls	Sanger / Illumina 1.9	50000.0	0.0	100.0	40.0	72.206	100.0	100	pass	pass	pass	fail	pass	pass	pass	pass	warn	pass
+g3_03_R1	g3_03_R1.fastq	Conventional base calls	Sanger / Illumina 1.9	50000.0	0.0	100.0	40.0	73.982	100.0	100	pass	pass	pass	fail	warn	pass	pass	pass	warn	pass
+g3_03_R2	g3_03_R2.fastq	Conventional base calls	Sanger / Illumina 1.9	50000.0	0.0	100.0	40.0	74.088	100.0	100	pass	pass	pass	fail	warn	pass	pass	pass	warn	pass

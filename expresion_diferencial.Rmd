@@ -1,0 +1,306 @@
+---
+title: "TP_NGS_Análisis_de_expresión_diferencial"
+author: "Escobar"
+date: "2025-05-29"
+output:
+  html_document: default
+  pdf_document: default
+---
+```{r}
+library(DESeq2)
+library(biomaRt)
+library(tidyverse)
+library(ggplot2)
+library(pheatmap)
+library(ggrepel)
+```
+
+## Construir la matriz de conteos
+```{r}
+# Lista de muestras
+samples <- c("g1_01", "g1_02", "g1_03", "g3_01", "g3_02", "g3_03")
+
+# Leer los archivos
+count_list <- lapply(samples, function(s) {
+  read.table(paste0("Mapping/alignments_STAR/", s, "_ReadsPerGene.out.tab"),
+             header = FALSE, stringsAsFactors = FALSE, skip = 4)[, c(1, 2)]
+})
+
+# Combinar por GeneID
+count_matrix <- Reduce(function(x, y) merge(x, y, by = 1), count_list)
+colnames(count_matrix) <- c("GeneID", samples)
+
+# Guardar
+write.table(count_matrix, file = "Mapping/count_matrix_STAR.txt", sep = "\t", row.names = FALSE, quote = FALSE)
+
+```
+## Leer la matriz de conteos
+```{r}
+counts <- read.table("Mapping/count_matrix_STAR.txt", header = TRUE, row.names = 1, sep = "\t", check.names = FALSE)
+head(counts)
+```
+## Crear tabla de muestras
+```{r}
+samples <- colnames(counts)
+condition <- factor(c("g1", "g1", "g1", "g3", "g3", "g3"))
+
+coldata <- data.frame(
+  row.names = samples,
+  condition = condition
+)
+
+coldata
+
+```
+## Filtrado de genes
+```{r}
+dds <- DESeqDataSetFromMatrix(countData = counts,
+                              colData = coldata,
+                              design = ~ condition)
+
+#Numero de genes antes del filtrado:
+nrow(dds)
+#Filtrado:
+dds <- dds[rowSums(counts(dds)) > 10, ]
+#Número de genes luego del filtrado:
+nrow(dds)
+# Filtrar genes con baja expresión
+
+dds
+
+```
+## Anotación
+```{r}
+# Conectar al mirror Asia de Ensembl con el dataset de Drosophila
+mart <- useMart(
+  biomart = "ensembl",
+  dataset = "dmelanogaster_gene_ensembl",
+  host = "https://asia.ensembl.org"
+)
+
+# Revisar filtros disponibles
+head(listFilters(mart))
+grep("ensembl", listFilters(mart)[,1], value=TRUE)
+
+# Atributos deseados
+attributes <- c(
+  'ensembl_gene_id',          # ID interno
+  'external_gene_name',       # Nombre común (símbolo)
+  'chromosome_name',
+  'start_position',
+  'end_position',
+  'description'
+)
+
+# Lista de genes en la matriz de conteo
+gene_ids <- rownames(counts(dds))
+
+# Obtener la anotación desde Ensembl
+annot <- getBM(
+  attributes = attributes,
+  filters = 'ensembl_gene_id',
+  values = gene_ids,
+  mart = mart
+)
+
+# Verificar anotación
+dim(annot)
+head(annot)
+
+```
+
+## Análisis de expresión diferencial
+```{r}
+dds <- DESeq(dds)
+res <- results(dds, contrast = c("condition", "g3", "g1"))
+summary(res)
+```
+
+## Ajustar modelo estadístico DESeq2
+```{r}
+dds_2 <- DESeq(dds)
+
+#Calcular conteo normalizado (transformación log2); + 1
+norm_counts <- log2(counts(dds_2, normalized = TRUE)+1)
+
+#Agregar anotación
+norm_counts_symbols <- merge(data.frame(ID=rownames(norm_counts), norm_counts, check.names=FALSE), annot, by.x="ID", by.y="ensembl_gene_id", all=F)
+
+#Escribir recuentos normalizados en un archivo
+write.table(norm_counts_symbols, "expresion_diferencial/normalized_counts_log2_star.txt", quote=F, col.names=T, row.names=F, sep="\t")
+```
+
+
+## Análisis de expresión diferencial
+```{r}
+#Chequeo de nombre de resultados.
+resultsNames(dds_2)
+
+#Extraer resultados para g3 vs g1
+de <- results(object = dds_2, contrast=c("condition", "g3", "g1"))
+
+#Chequeo de filas
+head(de)
+
+#Agregar la anotación
+de_symbols <- merge(data.frame(ID=rownames(de), de, check.names=FALSE), annot, by.x="ID", by.y="ensembl_gene_id", all=F)
+
+#Escribir los resultados de expresión diferencial en el archivo
+write.table(de_symbols, "expresion_diferencial/deseq2_results.txt", quote=F, col.names=T, row.names=F, sep="\t")
+
+```
+
+## Selección de Genes
+```{r}
+#Cuantos genes están expresados diferencialmente
+de_select <- de_symbols[de_symbols$pvalue < 0.05 & !is.na(de_symbols$pvalue) & abs(de_symbols$log2FoldChange) > 0,]
+
+write.table(de_select, "expresion_diferencial/deseq2_selection.txt", quote=F, col.names=T, row.names=F, sep="\t")
+
+#Consultar si todos están expresados diferencialmente
+```
+
+## Visualización - Volcano Plot
+```{r fig.width=5, fig.height=6}
+# Transformar los recuentos sin procesar para poder visualizar los datos
+se_rlog <- rlog(dds_2)
+
+# Correlación de muestras
+
+#Calcular la matriz de distancia entre muestras
+sampleDistMatrix <- as.matrix(dist(t(assay(se_rlog))))
+
+# La función vst() intenta hacer una estimación más robusta de la dispersión usando un subconjunto de genes (nsub = 1000).
+
+# Como trabajamos coon muy pocos genes, se usa varianceStabilizingTransformation, ya que no intenta seleccionar un subconjunto de genes.
+
+vsd <- varianceStabilizingTransformation(dds, blind = FALSE)
+
+
+# Heatmap de distancias
+pheatmap(as.matrix(sampleDistMatrix),
+         labels_col = coldata$condition,
+         main = "Heatmap de distancias entre muestras")
+
+# PCA
+#plotPCA(vsd, intgroup = "condition")
+
+# Extraer datos del PCA manualmente
+pca_data <- plotPCA(vsd, intgroup = "condition", returnData = TRUE)
+percentVar <- round(100 * attr(pca_data, "percentVar"))
+
+# Agregar columna de ID para etiquetas (si se desea usar los nombres de muestra)
+pca_data$Sample <- rownames(pca_data)
+
+# PCA plot estilo personalizado
+pca_custom <- ggplot(pca_data, aes(x = PC1, y = PC2, color = condition)) +
+  geom_point(size = 3) +
+  geom_text_repel(aes(label = Sample), size = 3, box.padding = 0.3) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
+  labs(
+    title = "Análisis de componentes principales (PCA)",
+    x = paste0("PC1 (", percentVar[1], "% variance)"),
+    y = paste0("PC2 (", percentVar[2], "% variance)"),
+    color = "Condición"
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    legend.position = "bottom",
+    legend.box = "horizontal",
+    panel.grid = element_blank()
+  )
+
+# Mostrar el gráfico
+pca_custom
+
+```
+## Volcano plot
+```{r}
+# Crear copia del data frame anotado para trabajar
+volcano_data <- de_symbols
+
+# Clasificar genes según expresión diferencial
+volcano_data$diffexpressed <- "NO"
+volcano_data$diffexpressed[volcano_data$log2FoldChange > 0 & volcano_data$pvalue < 0.05] <- "UP"
+volcano_data$diffexpressed[volcano_data$log2FoldChange < 0 & volcano_data$pvalue < 0.05] <- "DOWN"
+
+# Etiquetar genes significativos con nombre externo
+volcano_data$delabel <- NA
+volcano_data$delabel[volcano_data$diffexpressed != "NO"] <- volcano_data$external_gene_name[volcano_data$diffexpressed != "NO"]
+
+
+# Volcano plot
+ggplot(data = volcano_data,
+       aes(x = log2FoldChange,
+           y = -log10(pvalue),
+           color = diffexpressed,
+           label = delabel)) +
+  geom_point(alpha = 0.7) +
+  geom_text_repel(max.overlaps = 10) +
+  scale_color_manual(values = c("blue", "black", "red")) +  # DOWN, NO, UP
+  geom_vline(xintercept = c(-0.0, 0.0), col = "red", linetype = "dashed") +
+  geom_hline(yintercept = -log10(0.05), col = "red", linetype = "dashed") +
+  labs(
+    x = "log2 Fold Change",
+    y = "-log10(p-value)",
+    title = "Volcano Plot",
+    subtitle = "Genes diferencialmente expresados entre g3 (3g) y g1 (1g)",
+    caption = "Análisis RNA-seq con DESeq2",
+    color = "Expresión"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    plot.title = element_text(hjust = 0.5, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5),
+    panel.border = element_rect(colour = "black", fill = NA, linewidth = 1)
+  )
+```
+
+## Enriquecimiento funcional con enrichR
+```{r}
+library(enrichR)
+
+# Verificar bases de datos disponibles
+dbs <- listEnrichrDbs()
+```
+
+## selección de genes
+```{r}
+# Genes significativos con log2FC > 0.5 y pvalue < 0.05
+genes_degs <- de_select %>%
+  filter(!is.na(pvalue), pvalue < 0.05, abs(log2FoldChange) > 0) %>%
+  pull(external_gene_name) %>%
+  unique()
+
+# Convertir nombres de genes
+# Conectar a Ensembl Drosophila
+mart <- useMart(
+  biomart = "ensembl",
+  dataset = "dmelanogaster_gene_ensembl",
+  host = "https://asia.ensembl.org"
+)
+
+# Obtener FlyBase IDs correspondientes
+conversion <- getBM(
+  attributes = c("external_gene_name", "flybase_gene_id"),
+  filters = "external_gene_name",
+  values = genes_degs,
+  mart = mart
+)
+
+conversion
+# Usar los FlyBase IDs
+genes_fbgn <- conversion$flybase_gene_id
+
+# Enriquecimiento con base específica de Drosophila
+results_flybase <- enrichr(genes_fbgn, databases = c("GO_Biological_Process_2024, GO_Cellular_Component_2024, GO_Molecular_Function_2024", "KEGG_2016"))
+
+head(results_flybase[[1]])
+```
+
+
+
+

@@ -1,0 +1,13 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	g1_02_R1	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_crudos/g1_02_R1_fastqc.zip
+FastQC	all_sections	g3_03_R2	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_crudos/g3_03_R2_fastqc.zip
+FastQC	all_sections	g3_03_R1	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_crudos/g3_03_R1_fastqc.zip
+FastQC	all_sections	g3_01_R2	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_crudos/g3_01_R2_fastqc.zip
+FastQC	all_sections	g1_02_R2	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_crudos/g1_02_R2_fastqc.zip
+FastQC	all_sections	g1_03_R2	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_crudos/g1_03_R2_fastqc.zip
+FastQC	all_sections	g1_01_R1	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_crudos/g1_01_R1_fastqc.zip
+FastQC	all_sections	g3_02_R1	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_crudos/g3_02_R1_fastqc.zip
+FastQC	all_sections	g1_03_R1	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_crudos/g1_03_R1_fastqc.zip
+FastQC	all_sections	g3_02_R2	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_crudos/g3_02_R2_fastqc.zip
+FastQC	all_sections	g3_01_R1	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_crudos/g3_01_R1_fastqc.zip
+FastQC	all_sections	g1_01_R2	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_crudos/g1_01_R2_fastqc.zip

@@ -1,0 +1,91 @@
+skewer v0.2.2 [April 4, 2016]
+COMMAND LINE:	skewer -m pe -q 20 -l 36 -t 16 -o ../trimming-skewer/g3_03 g3_03_R1.fastq g3_03_R2.fastq
+Input file:	g3_03_R1.fastq
+Paired file:	g3_03_R2.fastq
+trimmed:	../trimming-skewer/g3_03-trimmed-pair1.fastq, ../trimming-skewer/g3_03-trimmed-pair2.fastq
+
+Parameters used:
+-- 3' end adapter sequence (-x):	AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC
+-- paired 3' end adapter sequence (-y):	AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTA
+-- maximum error ratio allowed (-r):	0.100
+-- maximum indel error ratio allowed (-d):	0.030
+-- end quality threshold (-q):		20
+-- minimum read length allowed after trimming (-l):	36
+-- file format (-f):		Sanger/Illumina 1.8+ FASTQ (auto detected)
+-- number of concurrent threads (-t):	16
+Wed May 21 18:47:04 2025 >> started
+
+Wed May 21 18:47:04 2025 >> done (0.087s)
+50000 read pairs processed; of these:
+  527 ( 1.05%) short read pairs filtered out after trimming by size control
+  380 ( 0.76%) empty read pairs filtered out after trimming by size control
+49093 (98.19%) read pairs available; of these:
+16663 (33.94%) trimmed read pairs available after processing
+32430 (66.06%) untrimmed read pairs available after processing
+
+Length distribution of reads after trimming:
+length	count	percentage
+ 37	    3	  0.01%
+ 38	    4	  0.01%
+ 39	    2	  0.00%
+ 40	    3	  0.01%
+ 41	    2	  0.00%
+ 42	    6	  0.01%
+ 43	    5	  0.01%
+ 44	    8	  0.02%
+ 45	    9	  0.02%
+ 46	   13	  0.03%
+ 47	    5	  0.01%
+ 48	    9	  0.02%
+ 49	   13	  0.03%
+ 50	   12	  0.02%
+ 51	   10	  0.02%
+ 52	   13	  0.03%
+ 53	   15	  0.03%
+ 54	   13	  0.03%
+ 55	   17	  0.03%
+ 56	   23	  0.05%
+ 57	    7	  0.01%
+ 58	   22	  0.04%
+ 59	   27	  0.05%
+ 60	   26	  0.05%
+ 61	   22	  0.04%
+ 62	   28	  0.06%
+ 63	   31	  0.06%
+ 64	   46	  0.09%
+ 65	   29	  0.06%
+ 66	   32	  0.07%
+ 67	   40	  0.08%
+ 68	   60	  0.12%
+ 69	   64	  0.13%
+ 70	   64	  0.13%
+ 71	   69	  0.14%
+ 72	   77	  0.16%
+ 73	   77	  0.16%
+ 74	   69	  0.14%
+ 75	   77	  0.16%
+ 76	   73	  0.15%
+ 77	   83	  0.17%
+ 78	   87	  0.18%
+ 79	  103	  0.21%
+ 80	   83	  0.17%
+ 81	  103	  0.21%
+ 82	  117	  0.24%
+ 83	  116	  0.24%
+ 84	  145	  0.30%
+ 85	  137	  0.28%
+ 86	  140	  0.29%
+ 87	  148	  0.30%
+ 88	  167	  0.34%
+ 89	  184	  0.37%
+ 90	  216	  0.44%
+ 91	  247	  0.50%
+ 92	  291	  0.59%
+ 93	  334	  0.68%
+ 94	  378	  0.77%
+ 95	  515	  1.05%
+ 96	  711	  1.45%
+ 97	 1051	  2.14%
+ 98	 1708	  3.48%
+ 99	 8474	 17.26%
+100	32430	 66.06%

@@ -1,0 +1,35 @@
+STAR version=2.7.11b
+STAR compilation time,server,dir=2024-11-25T09:14:51+0000 :/opt/conda/conda-bld/star_1732525954305/work/source
+##### Command Line:
+/home/alejandro/miniconda3/envs/BIO/bin/STAR-avx2 --runThreadN 16 --genomeDir Index_STAR_chr4 --readFilesIn ../Datos_RNA_seq_mosca/_R1.fastq ../Datos_RNA_seq_mosca/_R2.fastq --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --outSAMstrandField intronMotif --outFileNamePrefix alignments_STAR/_ done
+##### Initial USER parameters from Command Line:
+outFileNamePrefix                 alignments_STAR/_
+###### All USER parameters from Command Line:
+runThreadN                    16     ~RE-DEFINED
+genomeDir                     Index_STAR_chr4     ~RE-DEFINED
+readFilesIn                   ../Datos_RNA_seq_mosca/_R1.fastq   ../Datos_RNA_seq_mosca/_R2.fastq        ~RE-DEFINED
+outSAMtype                    BAM   SortedByCoordinate        ~RE-DEFINED
+quantMode                     GeneCounts        ~RE-DEFINED
+outSAMstrandField             intronMotif     ~RE-DEFINED
+outFileNamePrefix             alignments_STAR/_     ~RE-DEFINED
+##### Finished reading parameters from all sources
+
+##### Final user re-defined parameters-----------------:
+runThreadN                        16
+genomeDir                         Index_STAR_chr4
+readFilesIn                       ../Datos_RNA_seq_mosca/_R1.fastq   ../Datos_RNA_seq_mosca/_R2.fastq   
+outFileNamePrefix                 alignments_STAR/_
+outSAMtype                        BAM   SortedByCoordinate   
+outSAMstrandField                 intronMotif
+quantMode                         GeneCounts   
+
+-------------------------------
+##### Final effective command line:
+/home/alejandro/miniconda3/envs/BIO/bin/STAR-avx2   --runThreadN 16   --genomeDir Index_STAR_chr4   --readFilesIn ../Datos_RNA_seq_mosca/_R1.fastq   ../Datos_RNA_seq_mosca/_R2.fastq      --outFileNamePrefix alignments_STAR/_   --outSAMtype BAM   SortedByCoordinate      --outSAMstrandField intronMotif   --quantMode GeneCounts   
+----------------------------------------
+
+Number of fastq files for each mate = 1
+
+EXITING because of fatal input ERROR: could not open readFilesIn=../Datos_RNA_seq_mosca/_R1.fastq
+
+May 23 11:53:38 ...... FATAL ERROR, exiting

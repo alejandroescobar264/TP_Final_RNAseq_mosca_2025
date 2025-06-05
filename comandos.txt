@@ -1,0 +1,127 @@
+## CONTAR READS
+
+for fastq in Datos_RNA_seq_mosca/*.fastq 
+do 
+echo $fastq 
+cat $fastq | awk 'BEGIN{i=0}{i++;}END{print i/4}' 
+done
+
+Output:
+
+Datos_RNA_seq_mosca/g1_01_R1.fastq
+50000
+Datos_RNA_seq_mosca/g1_01_R2.fastq
+50000
+Datos_RNA_seq_mosca/g1_02_R1.fastq
+50000
+Datos_RNA_seq_mosca/g1_02_R2.fastq
+50000
+Datos_RNA_seq_mosca/g1_03_R1.fastq
+50000
+Datos_RNA_seq_mosca/g1_03_R2.fastq
+50000
+Datos_RNA_seq_mosca/g3_01_R1.fastq
+50000
+Datos_RNA_seq_mosca/g3_01_R2.fastq
+50000
+Datos_RNA_seq_mosca/g3_02_R1.fastq
+50000
+Datos_RNA_seq_mosca/g3_02_R2.fastq
+50000
+Datos_RNA_seq_mosca/g3_03_R1.fastq
+50000
+Datos_RNA_seq_mosca/g3_03_R2.fastq
+50000
+
+
+## CONTAR LONGITUD DE LAS LECTURAS
+
+for fastq in Datos_RNA_seq_mosca/*.fastq 
+do
+  echo "$fastq"
+  cat "$fastq" | paste - - - - | awk '{print length($2)}'
+done
+
+Se observa que todos tienen la misma ongitud de 100 pb
+
+## GENERAR REPORTES CRUDOS
+fastqc Datos_RNA_seq_mosca/*.fastq -o reportes_datos_crudos
+multiqc --data-dir reportes_datos_crudos -o reportes_datos_crudos
+
+## GENERAR ÍNDICES:
+
+STAR --runMode genomeGenerate \
+  --genomeDir Index_STAR_chr4 \
+  --genomeFastaFiles ../Datos_RNA_seq_mosca/genome/chr4.fa \
+  --sjdbGTFfile ../Datos_RNA_seq_mosca/genome/ensembl_dm3.chr4.gtf \
+  --sjdbOverhang 99 \
+  --runThreadN 16 \
+​  --genomeSAindexNbases 9.18 \
+  --outFileNamePrefix dm3_chr4
+
+Output:
+
+May 23 11:42:40 ..... started STAR run
+May 23 11:42:40 ... starting to generate Genome files
+May 23 11:42:40 ..... processing annotations GTF
+May 23 11:42:40 ... starting to sort Suffix Array. This may take a long time...
+May 23 11:42:40 ... sorting Suffix Array chunks and saving them to disk...
+May 23 11:42:41 ... loading chunks from disk, packing SA...
+May 23 11:42:41 ... finished generating suffix array
+May 23 11:42:41 ... generating Suffix Array index
+May 23 11:42:41 ... completed Suffix Array index
+May 23 11:42:41 ..... inserting junctions into the genome indices
+May 23 11:42:41 ... writing Genome to disk ...
+May 23 11:42:41 ... writing Suffix Array to disk ...
+May 23 11:42:41 ... writing SAindex to disk
+May 23 11:42:41 ..... finished successfully
+
+## MAPPERAR
+
+for sample in g1_01 g1_02 g1_03 g3_01 g3_02 g3_03 
+do
+  echo "Mapeando muestra: $sample"
+  
+  STAR --runThreadN 16 \
+    --genomeDir Index_STAR_chr4 \
+    --readFilesIn ../Datos_RNA_seq_mosca/${sample}_R1.fastq ../Datos_RNA_seq_mosca/${sample}_R2.fastq \
+    --outSAMtype BAM SortedByCoordinate \
+    --quantMode GeneCounts \
+    --outSAMstrandField intronMotif \
+    --outFileNamePrefix alignments_STAR/${sample}_ 
+done
+
+## CCONTROL DE CALIDAD DE LOS MAPEOS QUALIMAP
+
+for sample in g1_01 g1_02 g1_03 g3_01 g3_02 g3_03
+do
+  echo "Corriendo Qualimap para $sample..."
+  qualimap rnaseq \
+    -bam alignments_STAR/${sample}_Aligned.sortedByCoord.out.bam \
+    -gtf ../Datos_RNA_seq_mosca/genome/ensembl_dm3.chr4.gtf \
+    -outdir qc_qualimap/${sample} \
+    -p non-strand-specific \
+    -pe
+done
+
+
+## GENERAR ARCHIVOS DE COBERTURA
+
+for sample in g1_01 g1_02 g1_03 g3_01 g3_02 g3_03
+do
+  echo "Generando .bw para $sample..."
+  bamCoverage \
+    -b alignments_STAR/${sample}_Aligned.sortedByCoord.out.bam \
+    -o bw_tracks/${sample}.bw \
+    --binSize 5 \
+    --normalizeUsing CPM \
+    --extendReads \
+    --ignoreDuplicates \
+    --numberOfProcessors 16
+done
+
+
+
+
+
+

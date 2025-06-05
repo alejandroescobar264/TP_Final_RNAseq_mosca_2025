@@ -1,0 +1,25 @@
+Sample	Unique Reads	Duplicate Reads
+g1_01_R1_paired	35471.0	10395.0
+g1_01_R1_unpaired	1493.0	13.0
+g1_01_R2_paired	35473.0	10393.0
+g1_01_R2_unpaired	1014.0	3.0
+g1_02_R1_paired	36745.0	9695.0
+g1_02_R1_unpaired	1355.0	3.0
+g1_02_R2_paired	36939.0	9501.0
+g1_02_R2_unpaired	875.0	0.0
+g1_03_R1_paired	35650.0	10552.0
+g1_03_R1_unpaired	1401.0	8.0
+g1_03_R2_paired	35876.0	10326.0
+g1_03_R2_unpaired	862.0	2.0
+g3_01_R1_paired	36089.0	10130.0
+g3_01_R1_unpaired	1413.0	8.0
+g3_01_R2_paired	36179.0	10040.0
+g3_01_R2_unpaired	887.0	2.0
+g3_02_R1_paired	34103.0	12073.0
+g3_02_R1_unpaired	1341.0	10.0
+g3_02_R2_paired	34255.0	11921.0
+g3_02_R2_unpaired	958.0	7.0
+g3_03_R1_paired	34942.0	11202.0
+g3_03_R1_unpaired	1463.0	8.0
+g3_03_R2_paired	35038.0	11106.0
+g3_03_R2_unpaired	871.0	3.0

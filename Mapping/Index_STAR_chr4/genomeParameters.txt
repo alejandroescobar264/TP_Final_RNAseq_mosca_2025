@@ -1,0 +1,19 @@
+### /home/alejandro/miniconda3/envs/BIO/bin/STAR-avx2   --runMode genomeGenerate      --runThreadN 16   --genomeDir Index_STAR_chr4   --genomeFastaFiles ../Datos_RNA_seq_mosca/genome/chr4.fa      --genomeSAindexNbases 9   --outFileNamePrefix dm3_chr4   --sjdbGTFfile ../Datos_RNA_seq_mosca/genome/ensembl_dm3.chr4.gtf   --sjdbOverhang 99
+### GstrandBit 32
+versionGenome	2.7.4a
+genomeType	Full
+genomeFastaFiles	../Datos_RNA_seq_mosca/genome/chr4.fa 
+genomeSAindexNbases	9
+genomeChrBinNbits	18
+genomeSAsparseD	1
+genomeTransformType	None
+genomeTransformVCF	-
+sjdbOverhang	99
+sjdbFileChrStartEnd	- 
+sjdbGTFfile	../Datos_RNA_seq_mosca/genome/ensembl_dm3.chr4.gtf
+sjdbGTFchrPrefix	-
+sjdbGTFfeatureExon	exon
+sjdbGTFtagExonParentTranscript	transcript_id
+sjdbGTFtagExonParentGene	gene_id
+sjdbInsertSave	Basic
+genomeFileSizes	1731467 12453898

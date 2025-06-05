@@ -1,0 +1,96 @@
+STAR version=2.7.11b
+STAR compilation time,server,dir=2024-11-25T09:14:51+0000 :/opt/conda/conda-bld/star_1732525954305/work/source
+##### Command Line:
+/home/alejandro/miniconda3/envs/BIO/bin/STAR-avx2 --runMode genomeGenerate --genomeDir Index_STAR_chr4 --genomeFastaFiles ../Datos_RNA_seq_mosca/genome/chr4.fa --sjdbGTFfile ../Datos_RNA_seq_mosca/genome/ensembl_dm3.chr4.gtf --sjdbOverhang 99 --runThreadN 16 ​ --genomeSAindexNbases 9.18 --outFileNamePrefix dm3_chr4
+##### Initial USER parameters from Command Line:
+outFileNamePrefix                 dm3_chr4
+###### All USER parameters from Command Line:
+runMode                       genomeGenerate        ~RE-DEFINED
+genomeDir                     Index_STAR_chr4     ~RE-DEFINED
+genomeFastaFiles              ../Datos_RNA_seq_mosca/genome/chr4.fa        ~RE-DEFINED
+sjdbGTFfile                   ../Datos_RNA_seq_mosca/genome/ensembl_dm3.chr4.gtf     ~RE-DEFINED
+sjdbOverhang                  99     ~RE-DEFINED
+runThreadN                    16     ~RE-DEFINED
+genomeSAindexNbases           9     ~RE-DEFINED
+outFileNamePrefix             dm3_chr4     ~RE-DEFINED
+##### Finished reading parameters from all sources
+
+##### Final user re-defined parameters-----------------:
+runMode                           genomeGenerate   
+runThreadN                        16
+genomeDir                         Index_STAR_chr4
+genomeFastaFiles                  ../Datos_RNA_seq_mosca/genome/chr4.fa   
+genomeSAindexNbases               9
+outFileNamePrefix                 dm3_chr4
+sjdbGTFfile                       ../Datos_RNA_seq_mosca/genome/ensembl_dm3.chr4.gtf
+sjdbOverhang                      99
+
+-------------------------------
+##### Final effective command line:
+/home/alejandro/miniconda3/envs/BIO/bin/STAR-avx2   --runMode genomeGenerate      --runThreadN 16   --genomeDir Index_STAR_chr4   --genomeFastaFiles ../Datos_RNA_seq_mosca/genome/chr4.fa      --genomeSAindexNbases 9   --outFileNamePrefix dm3_chr4   --sjdbGTFfile ../Datos_RNA_seq_mosca/genome/ensembl_dm3.chr4.gtf   --sjdbOverhang 99
+----------------------------------------
+
+Number of fastq files for each mate = 1
+ParametersSolo: --soloCellFilterType CellRanger2.2 filtering parameters:  3000 0.99 10
+Finished loading and checking parameters
+--genomeDir directory exists and will be overwritten: Index_STAR_chr4/
+May 23 11:42:40 ... starting to generate Genome files
+../Datos_RNA_seq_mosca/genome/chr4.fa : chr # 0  "chr4" chrStart: 0
+Chromosome sequence lengths: 
+chr4	1351857
+Genome sequence total length = 1351857
+Genome size with padding = 1572864
+May 23 11:42:40 ..... processing annotations GTF
+Processing pGe.sjdbGTFfile=../Datos_RNA_seq_mosca/genome/ensembl_dm3.chr4.gtf, found:
+		245 transcripts
+		2367 exons (non-collapsed)
+		797 collapsed junctions
+Total junctions: 797
+May 23 11:42:40 ..... finished GTF processing
+
+Estimated genome size with padding and SJs: total=genome+SJ=200572864 = 1572864 + 199000000
+GstrandBit=32
+Number of SA indices: 2703514
+May 23 11:42:40 ... starting to sort Suffix Array. This may take a long time...
+Number of chunks: 16;   chunks size limit: 1441872 bytes
+May 23 11:42:40 ... sorting Suffix Array chunks and saving them to disk...
+Writing 1328720 bytes into Index_STAR_chr4//SA_0 ; empty space on disk = 277219053568 bytes ... done
+Writing 1406496 bytes into Index_STAR_chr4//SA_1 ; empty space on disk = 277217722368 bytes ... done
+Writing 1411408 bytes into Index_STAR_chr4//SA_2 ; empty space on disk = 277216313344 bytes ... done
+Writing 1390040 bytes into Index_STAR_chr4//SA_3 ; empty space on disk = 277214769152 bytes ... done
+Writing 1435840 bytes into Index_STAR_chr4//SA_4 ; empty space on disk = 277213360128 bytes ... done
+Writing 1404888 bytes into Index_STAR_chr4//SA_5 ; empty space on disk = 277211906048 bytes ... done
+Writing 1421504 bytes into Index_STAR_chr4//SA_6 ; empty space on disk = 277210484736 bytes ... done
+Writing 1427320 bytes into Index_STAR_chr4//SA_7 ; empty space on disk = 277209042944 bytes ... done
+Writing 1403824 bytes into Index_STAR_chr4//SA_8 ; empty space on disk = 277207552000 bytes ... done
+Writing 1400720 bytes into Index_STAR_chr4//SA_9 ; empty space on disk = 277206126592 bytes ... done
+Writing 1406816 bytes into Index_STAR_chr4//SA_10 ; empty space on disk = 277204684800 bytes ... done
+Writing 1418984 bytes into Index_STAR_chr4//SA_11 ; empty space on disk = 277203259392 bytes ... done
+Writing 1416824 bytes into Index_STAR_chr4//SA_12 ; empty space on disk = 277201821696 bytes ... done
+Writing 1429040 bytes into Index_STAR_chr4//SA_13 ; empty space on disk = 277200388096 bytes ... done
+Writing 1316072 bytes into Index_STAR_chr4//SA_14 ; empty space on disk = 277198942208 bytes ... done
+Writing 609616 bytes into Index_STAR_chr4//SA_15 ; empty space on disk = 277197582336 bytes ... done
+May 23 11:42:41 ... loading chunks from disk, packing SA...
+May 23 11:42:41 ... finished generating suffix array
+May 23 11:42:41 ... generating Suffix Array index
+May 23 11:42:41 ... completed Suffix Array index
+May 23 11:42:41   Finished preparing junctions
+May 23 11:42:41 ..... inserting junctions into the genome indices
+May 23 11:42:41   Finished SA search: number of new junctions=797, old junctions=0
+May 23 11:42:41   Finished sorting SA indicesL nInd=315612
+Genome size with junctions=1731467  1572864   158603
+GstrandBit1=32   GstrandBit=32
+May 23 11:42:41   Finished inserting junction indices
+May 23 11:42:41   Finished SAi
+May 23 11:42:41 ..... finished inserting junctions into genome
+May 23 11:42:41 ... writing Genome to disk ...
+Writing 1731467 bytes into Index_STAR_chr4//Genome ; empty space on disk = 277218525184 bytes ... done
+SA size in bytes: 12453898
+May 23 11:42:41 ... writing Suffix Array to disk ...
+Writing 12453898 bytes into Index_STAR_chr4//SA ; empty space on disk = 277216792576 bytes ... done
+May 23 11:42:41 ... writing SAindex to disk
+Writing 8 bytes into Index_STAR_chr4//SAindex ; empty space on disk = 277204336640 bytes ... done
+Writing 80 bytes into Index_STAR_chr4//SAindex ; empty space on disk = 277204336640 bytes ... done
+Writing 1529171 bytes into Index_STAR_chr4//SAindex ; empty space on disk = 277204336640 bytes ... done
+May 23 11:42:41 ..... finished successfully
+DONE: Genome generation, EXITING

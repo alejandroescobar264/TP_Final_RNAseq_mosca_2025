@@ -1,0 +1,57 @@
+RNA-Seq QC report
+-----------------------------------
+
+>>>>>>> Input
+
+    bam file = alignments_STAR/g1_03_Aligned.sortedByCoord.out.bam
+    gff file = ../Datos_RNA_seq_mosca/genome/ensembl_dm3.chr4.gtf
+    counting algorithm = uniquely-mapped-reads
+    protocol = non-strand-specific
+    5'-3' bias region size = 100
+    5'-3' bias number of top transcripts = 1000
+
+
+>>>>>>> Reads alignment
+
+    reads aligned (left/right) = 49.881 / 49.881
+    read pairs aligned  = 49.881
+    total alignments = 113.192
+    secondary alignments = 13.430
+    non-unique alignments = 18.304
+    aligned to genes  = 82.730
+    ambiguous alignments = 12
+    no feature assigned = 12.146
+    not aligned = 0
+    SSP estimation (fwd/rev) = 0,51 / 0,49
+
+
+>>>>>>> Reads genomic origin
+
+    exonic =  82.730 (87,2%)
+    intronic = 5.750 (6,06%)
+    intergenic = 6.396 (6,74%)
+    overlapping exon = 1.700 (1,79%)
+
+
+>>>>>>> Transcript coverage profile
+
+    5' bias = 0,83
+    3' bias = 0,41
+    5'-3' bias = 1,95
+
+
+>>>>>>> Junction analysis
+
+    reads at junctions = 15.373
+
+    ACCT : 10,93%
+    TGGC : 4,77%
+    GTCT : 4,32%
+    TGGT : 3,38%
+    ATCT : 3,1%
+    GGTG : 2,95%
+    GCTT : 2,49%
+    TTCT : 2,43%
+    TCCA : 2,3%
+    ATAC : 1,83%
+    AGAT : 1,68%

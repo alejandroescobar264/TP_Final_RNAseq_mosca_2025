@@ -1,0 +1,4 @@
+[2025-05-29 11:45:54,454] multiqc.core.version_check                         [WARNING]  MultiQC Version v1.29 now available!
+[2025-05-29 11:45:54,455] multiqc.core.file_search                           [INFO   ]  Search path: /home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/Mapping
+[2025-05-29 11:45:54,789] multiqc.modules.qualimap.qualimap                  [INFO   ]  Found 6 RNASeq reports
+[2025-05-29 11:45:54,797] multiqc.modules.star.star                          [INFO   ]  Found 6 reports and 6 gene count files

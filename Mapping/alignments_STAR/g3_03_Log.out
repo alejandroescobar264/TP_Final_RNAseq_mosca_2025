@@ -1,0 +1,182 @@
+STAR version=2.7.11b
+STAR compilation time,server,dir=2024-11-25T09:14:51+0000 :/opt/conda/conda-bld/star_1732525954305/work/source
+##### Command Line:
+/home/alejandro/miniconda3/envs/BIO/bin/STAR-avx2 --runThreadN 16 --genomeDir Index_STAR_chr4 --readFilesIn ../Datos_RNA_seq_mosca/g3_03_R1.fastq ../Datos_RNA_seq_mosca/g3_03_R2.fastq --outSAMtype BAM SortedByCoordinate --quantMode GeneCounts --outSAMstrandField intronMotif --outFileNamePrefix alignments_STAR/g3_03_
+##### Initial USER parameters from Command Line:
+outFileNamePrefix                 alignments_STAR/g3_03_
+###### All USER parameters from Command Line:
+runThreadN                    16     ~RE-DEFINED
+genomeDir                     Index_STAR_chr4     ~RE-DEFINED
+readFilesIn                   ../Datos_RNA_seq_mosca/g3_03_R1.fastq   ../Datos_RNA_seq_mosca/g3_03_R2.fastq        ~RE-DEFINED
+outSAMtype                    BAM   SortedByCoordinate        ~RE-DEFINED
+quantMode                     GeneCounts        ~RE-DEFINED
+outSAMstrandField             intronMotif     ~RE-DEFINED
+outFileNamePrefix             alignments_STAR/g3_03_     ~RE-DEFINED
+##### Finished reading parameters from all sources
+
+##### Final user re-defined parameters-----------------:
+runThreadN                        16
+genomeDir                         Index_STAR_chr4
+readFilesIn                       ../Datos_RNA_seq_mosca/g3_03_R1.fastq   ../Datos_RNA_seq_mosca/g3_03_R2.fastq   
+outFileNamePrefix                 alignments_STAR/g3_03_
+outSAMtype                        BAM   SortedByCoordinate   
+outSAMstrandField                 intronMotif
+quantMode                         GeneCounts   
+
+-------------------------------
+##### Final effective command line:
+/home/alejandro/miniconda3/envs/BIO/bin/STAR-avx2   --runThreadN 16   --genomeDir Index_STAR_chr4   --readFilesIn ../Datos_RNA_seq_mosca/g3_03_R1.fastq   ../Datos_RNA_seq_mosca/g3_03_R2.fastq      --outFileNamePrefix alignments_STAR/g3_03_   --outSAMtype BAM   SortedByCoordinate      --outSAMstrandField intronMotif   --quantMode GeneCounts   
+----------------------------------------
+
+Number of fastq files for each mate = 1
+WARNING --outSAMstrandField=intronMotif, therefore STAR will output XS attribute
+ParametersSolo: --soloCellFilterType CellRanger2.2 filtering parameters:  3000 0.99 10
+WARNING: --limitBAMsortRAM=0, will use genome size as RAM limit for BAM sorting
+Finished loading and checking parameters
+Reading genome generation parameters:
+### /home/alejandro/miniconda3/envs/BIO/bin/STAR-avx2   --runMode genomeGenerate      --runThreadN 16   --genomeDir Index_STAR_chr4   --genomeFastaFiles ../Datos_RNA_seq_mosca/genome/chr4.fa      --genomeSAindexNbases 9   --outFileNamePrefix dm3_chr4   --sjdbGTFfile ../Datos_RNA_seq_mosca/genome/ensembl_dm3.chr4.gtf   --sjdbOverhang 99
+### GstrandBit=32
+versionGenome                 2.7.4a     ~RE-DEFINED
+genomeType                    Full     ~RE-DEFINED
+genomeFastaFiles              ../Datos_RNA_seq_mosca/genome/chr4.fa        ~RE-DEFINED
+genomeSAindexNbases           9     ~RE-DEFINED
+genomeChrBinNbits             18     ~RE-DEFINED
+genomeSAsparseD               1     ~RE-DEFINED
+genomeTransformType           None     ~RE-DEFINED
+genomeTransformVCF            -     ~RE-DEFINED
+sjdbOverhang                  99     ~RE-DEFINED
+sjdbFileChrStartEnd           -        ~RE-DEFINED
+sjdbGTFfile                   ../Datos_RNA_seq_mosca/genome/ensembl_dm3.chr4.gtf     ~RE-DEFINED
+sjdbGTFchrPrefix              -     ~RE-DEFINED
+sjdbGTFfeatureExon            exon     ~RE-DEFINED
+sjdbGTFtagExonParentTranscripttranscript_id     ~RE-DEFINED
+sjdbGTFtagExonParentGene      gene_id     ~RE-DEFINED
+sjdbInsertSave                Basic     ~RE-DEFINED
+genomeFileSizes               1731467   12453898        ~RE-DEFINED
+Genome version is compatible with current STAR
+Number of real (reference) chromosomes= 1
+1	chr4	1351857	0
+--sjdbOverhang = 99 taken from the generated genome
+Started loading the genome: Fri May 23 11:57:35 2025
+
+Genome: size given as a parameter = 1731467
+SA: size given as a parameter = 12453898
+SAindex: size given as a parameter = 1
+Read from SAindex: pGe.gSAindexNbases=9  nSAi=349524
+nGenome=1731467;  nSAbyte=12453898
+GstrandBit=32   SA number of indices=3019126
+Shared memory is not used for genomes. Allocated a private copy of the genome.
+Genome file size: 1731467 bytes; state: good=1 eof=0 fail=0 bad=0
+Loading Genome ... done! state: good=1 eof=0 fail=0 bad=0; loaded 1731467 bytes
+SA file size: 12453898 bytes; state: good=1 eof=0 fail=0 bad=0
+Loading SA ... done! state: good=1 eof=0 fail=0 bad=0; loaded 12453898 bytes
+Loading SAindex ... done: 1529259 bytes
+Finished loading the genome: Fri May 23 11:57:35 2025
+
+Processing splice junctions database sjdbN=797,   pGe.sjdbOverhang=99 
+alignIntronMax=alignMatesGapMax=0, the max intron size will be approximately determined by (2^winBinNbits)*winAnchorDistNbins=589824
+Created thread # 1
+Created thread # 2
+Created thread # 3
+Created thread # 4
+Created thread # 5
+Created thread # 6
+Created thread # 7
+Created thread # 8
+Created thread # 9
+Created thread # 10
+Created thread # 11
+Created thread # 12
+Created thread # 13
+Created thread # 14
+Created thread # 15
+Thread #1 end of input stream, nextChar=-1
+Completed: thread #2
+Completed: thread #4
+Completed: thread #3
+Completed: thread #6
+Completed: thread #5
+Completed: thread #7
+Completed: thread #8
+Completed: thread #10
+Completed: thread #11
+Completed: thread #9
+Completed: thread #12
+Completed: thread #13
+Completed: thread #14
+Completed: thread #0
+Completed: thread #15
+BAM sorting: 110276 mapped reads
+BAM sorting bins genomic start loci:
+1	0	49902
+2	0	61825
+3	0	86915
+4	0	87158
+5	0	87349
+6	0	87623
+7	0	129178
+8	0	154367
+9	0	180975
+10	0	205100
+11	0	238907
+12	0	330617
+13	0	352014
+14	0	381405
+15	0	463987
+16	0	485431
+17	0	566763
+18	0	592436
+19	0	641110
+20	0	677360
+21	0	705570
+22	0	799415
+23	0	884092
+24	0	919418
+25	0	940318
+26	0	1031745
+27	0	1052510
+28	0	1054387
+29	0	1059041
+30	0	1086994
+31	0	1089383
+32	0	1091079
+33	0	1092107
+34	0	1093147
+35	0	1093984
+36	0	1094640
+37	0	1095131
+38	0	1095477
+39	0	1095864
+40	0	1096286
+41	0	1096590
+42	0	1138483
+43	0	1195181
+44	0	1233591
+45	0	1325007
+46	0	1329071
+47	0	1338226
+48	0	1342803
+Completed: thread #1
+Joined thread # 1
+Joined thread # 2
+Joined thread # 3
+Joined thread # 4
+Joined thread # 5
+Joined thread # 6
+Joined thread # 7
+Joined thread # 8
+Joined thread # 9
+Joined thread # 10
+Joined thread # 11
+Joined thread # 12
+Joined thread # 13
+Joined thread # 14
+Joined thread # 15
+May 23 11:57:39 ..... finished mapping
+RAM after mapping:
+VmPeak:	 2766128 kB; VmSize:	 2610436 kB; VmHWM:	 1688688 kB; VmRSS:	 1663232 kB; 
+RAM after freeing genome index memory:
+VmPeak:	 2766128 kB; VmSize:	 2595084 kB; VmHWM:	 1688688 kB; VmRSS:	 1647784 kB; 
+May 23 11:57:39 ..... started sorting BAM
+Max memory needed for sorting = 599944
+ALL DONE!

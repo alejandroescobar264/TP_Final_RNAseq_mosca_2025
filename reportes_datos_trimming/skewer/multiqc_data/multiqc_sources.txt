@@ -1,0 +1,13 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	g1_02-trimmed-pair2	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming/skewer/g1_02-trimmed-pair2_fastqc.zip
+FastQC	all_sections	g3_02-trimmed-pair2	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming/skewer/g3_02-trimmed-pair2_fastqc.zip
+FastQC	all_sections	g3_01-trimmed-pair1	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming/skewer/g3_01-trimmed-pair1_fastqc.zip
+FastQC	all_sections	g3_01-trimmed-pair2	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming/skewer/g3_01-trimmed-pair2_fastqc.zip
+FastQC	all_sections	g1_01-trimmed-pair1	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming/skewer/g1_01-trimmed-pair1_fastqc.zip
+FastQC	all_sections	g1_03-trimmed-pair1	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming/skewer/g1_03-trimmed-pair1_fastqc.zip
+FastQC	all_sections	g3_03-trimmed-pair2	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming/skewer/g3_03-trimmed-pair2_fastqc.zip
+FastQC	all_sections	g1_01-trimmed-pair2	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming/skewer/g1_01-trimmed-pair2_fastqc.zip
+FastQC	all_sections	g1_03-trimmed-pair2	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming/skewer/g1_03-trimmed-pair2_fastqc.zip
+FastQC	all_sections	g3_02-trimmed-pair1	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming/skewer/g3_02-trimmed-pair1_fastqc.zip
+FastQC	all_sections	g1_02-trimmed-pair1	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming/skewer/g1_02-trimmed-pair1_fastqc.zip
+FastQC	all_sections	g3_03-trimmed-pair1	/home/alejandro/Documentos/Bioinfo/NGS/TP_Final/TP_Final_RNAseq_mosca_2025/reportes_datos_trimming/skewer/g3_03-trimmed-pair1_fastqc.zip

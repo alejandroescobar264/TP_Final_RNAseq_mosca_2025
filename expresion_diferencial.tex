@@ -1,0 +1,911 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={TP\_NGS\_Análisis\_de\_expresión\_diferencial},
+  pdfauthor={Escobar},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{TP\_NGS\_Análisis\_de\_expresión\_diferencial}
+\author{Escobar}
+\date{2025-05-29}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(DESeq2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Cargando paquete requerido: S4Vectors
+\end{verbatim}
+
+\begin{verbatim}
+## Cargando paquete requerido: stats4
+\end{verbatim}
+
+\begin{verbatim}
+## Cargando paquete requerido: BiocGenerics
+\end{verbatim}
+
+\begin{verbatim}
+## Cargando paquete requerido: generics
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Adjuntando el paquete: 'generics'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     as.difftime, as.factor, as.ordered, intersect, is.element, setdiff,
+##     setequal, union
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Adjuntando el paquete: 'BiocGenerics'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     IQR, mad, sd, var, xtabs
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     anyDuplicated, aperm, append, as.data.frame, basename, cbind,
+##     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,
+##     get, grep, grepl, is.unsorted, lapply, Map, mapply, match, mget,
+##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+##     rbind, Reduce, rownames, sapply, saveRDS, table, tapply, unique,
+##     unsplit, which.max, which.min
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Adjuntando el paquete: 'S4Vectors'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:utils':
+## 
+##     findMatches
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     expand.grid, I, unname
+\end{verbatim}
+
+\begin{verbatim}
+## Cargando paquete requerido: IRanges
+\end{verbatim}
+
+\begin{verbatim}
+## Cargando paquete requerido: GenomicRanges
+\end{verbatim}
+
+\begin{verbatim}
+## Cargando paquete requerido: GenomeInfoDb
+\end{verbatim}
+
+\begin{verbatim}
+## Cargando paquete requerido: SummarizedExperiment
+\end{verbatim}
+
+\begin{verbatim}
+## Cargando paquete requerido: MatrixGenerics
+\end{verbatim}
+
+\begin{verbatim}
+## Cargando paquete requerido: matrixStats
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Adjuntando el paquete: 'MatrixGenerics'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:matrixStats':
+## 
+##     colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+##     colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+##     colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+##     colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+##     colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+##     colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+##     colWeightedMeans, colWeightedMedians, colWeightedSds,
+##     colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+##     rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+##     rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+##     rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+##     rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+##     rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+##     rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+##     rowWeightedSds, rowWeightedVars
+\end{verbatim}
+
+\begin{verbatim}
+## Cargando paquete requerido: Biobase
+\end{verbatim}
+
+\begin{verbatim}
+## Welcome to Bioconductor
+## 
+##     Vignettes contain introductory material; view with
+##     'browseVignettes()'. To cite Bioconductor, see
+##     'citation("Biobase")', and for packages 'citation("pkgname")'.
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Adjuntando el paquete: 'Biobase'
+\end{verbatim}
+
+\begin{verbatim}
+## The following object is masked from 'package:MatrixGenerics':
+## 
+##     rowMedians
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:matrixStats':
+## 
+##     anyMissing, rowMedians
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(biomaRt)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.5
+## v forcats   1.0.0     v stringr   1.5.1
+## v ggplot2   3.5.2     v tibble    3.2.1
+## v lubridate 1.9.4     v tidyr     1.3.1
+## v purrr     1.0.4
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x lubridate::%within%() masks IRanges::%within%()
+## x dplyr::collapse()     masks IRanges::collapse()
+## x dplyr::combine()      masks Biobase::combine(), BiocGenerics::combine()
+## x dplyr::count()        masks matrixStats::count()
+## x dplyr::desc()         masks IRanges::desc()
+## x tidyr::expand()       masks S4Vectors::expand()
+## x dplyr::filter()       masks stats::filter()
+## x dplyr::first()        masks S4Vectors::first()
+## x dplyr::lag()          masks stats::lag()
+## x ggplot2::Position()   masks BiocGenerics::Position(), base::Position()
+## x purrr::reduce()       masks GenomicRanges::reduce(), IRanges::reduce()
+## x dplyr::rename()       masks S4Vectors::rename()
+## x lubridate::second()   masks S4Vectors::second()
+## x lubridate::second<-() masks S4Vectors::second<-()
+## x dplyr::select()       masks biomaRt::select()
+## x dplyr::slice()        masks IRanges::slice()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(pheatmap)}
+\FunctionTok{library}\NormalTok{(ggrepel)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Construir la matriz de
+conteos}\label{construir-la-matriz-de-conteos}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Lista de muestras}
+\NormalTok{samples }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"g1\_01"}\NormalTok{, }\StringTok{"g1\_02"}\NormalTok{, }\StringTok{"g1\_03"}\NormalTok{, }\StringTok{"g3\_01"}\NormalTok{, }\StringTok{"g3\_02"}\NormalTok{, }\StringTok{"g3\_03"}\NormalTok{)}
+
+\CommentTok{\# Leer los archivos}
+\NormalTok{count\_list }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(samples, }\ControlFlowTok{function}\NormalTok{(s) \{}
+  \FunctionTok{read.table}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Mapping/alignments\_STAR/"}\NormalTok{, s, }\StringTok{"\_ReadsPerGene.out.tab"}\NormalTok{),}
+             \AttributeTok{header =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{skip =} \DecValTok{4}\NormalTok{)[, }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)]}
+\NormalTok{\})}
+
+\CommentTok{\# Combinar por GeneID}
+\NormalTok{count\_matrix }\OtherTok{\textless{}{-}} \FunctionTok{Reduce}\NormalTok{(}\ControlFlowTok{function}\NormalTok{(x, y) }\FunctionTok{merge}\NormalTok{(x, y, }\AttributeTok{by =} \DecValTok{1}\NormalTok{), count\_list)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in merge.data.frame(x, y, by = 1): column names 'V2.x', 'V2.y' are
+## duplicated in the result
+## Warning in merge.data.frame(x, y, by = 1): column names 'V2.x', 'V2.y' are
+## duplicated in the result
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in merge.data.frame(x, y, by = 1): column names 'V2.x', 'V2.y', 'V2.x',
+## 'V2.y' are duplicated in the result
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{colnames}\NormalTok{(count\_matrix) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"GeneID"}\NormalTok{, samples)}
+
+\CommentTok{\# Guardar}
+\FunctionTok{write.table}\NormalTok{(count\_matrix, }\AttributeTok{file =} \StringTok{"Mapping/count\_matrix\_STAR.txt"}\NormalTok{, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{quote =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Leer la matriz de conteos}\label{leer-la-matriz-de-conteos}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{counts }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\StringTok{"Mapping/count\_matrix\_STAR.txt"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{row.names =} \DecValTok{1}\NormalTok{, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{, }\AttributeTok{check.names =} \ConstantTok{FALSE}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(counts)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             g1_01 g1_02 g1_03 g3_01 g3_02 g3_03
+## FBgn0002521   227   223   231   235   207   268
+## FBgn0004607   489   383   415   374   322   539
+## FBgn0004624   618   590   616   636   566   548
+## FBgn0004859   679   670   570   631   542   871
+## FBgn0005558    35    35    28    27    33    36
+## FBgn0005561    49    57    52    61    30    35
+\end{verbatim}
+
+\subsection{Crear tabla de muestras}\label{crear-tabla-de-muestras}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{samples }\OtherTok{\textless{}{-}} \FunctionTok{colnames}\NormalTok{(counts)}
+\NormalTok{condition }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"g1"}\NormalTok{, }\StringTok{"g1"}\NormalTok{, }\StringTok{"g1"}\NormalTok{, }\StringTok{"g3"}\NormalTok{, }\StringTok{"g3"}\NormalTok{, }\StringTok{"g3"}\NormalTok{))}
+
+\NormalTok{coldata }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{row.names =}\NormalTok{ samples,}
+  \AttributeTok{condition =}\NormalTok{ condition}
+\NormalTok{)}
+
+\NormalTok{coldata}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       condition
+## g1_01        g1
+## g1_02        g1
+## g1_03        g1
+## g3_01        g3
+## g3_02        g3
+## g3_03        g3
+\end{verbatim}
+
+\subsection{Filtrado de genes}\label{filtrado-de-genes}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dds }\OtherTok{\textless{}{-}} \FunctionTok{DESeqDataSetFromMatrix}\NormalTok{(}\AttributeTok{countData =}\NormalTok{ counts,}
+                              \AttributeTok{colData =}\NormalTok{ coldata,}
+                              \AttributeTok{design =} \SpecialCharTok{\textasciitilde{}}\NormalTok{ condition)}
+
+\CommentTok{\#Numero de genes antes del filtrado:}
+\FunctionTok{nrow}\NormalTok{(dds)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 87
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Filtrado:}
+\NormalTok{dds }\OtherTok{\textless{}{-}}\NormalTok{ dds[}\FunctionTok{rowSums}\NormalTok{(}\FunctionTok{counts}\NormalTok{(dds)) }\SpecialCharTok{\textgreater{}} \DecValTok{10}\NormalTok{, ]}
+\CommentTok{\#Número de genes luego del filtrado:}
+\FunctionTok{nrow}\NormalTok{(dds)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 82
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Filtrar genes con baja expresión}
+
+\NormalTok{dds}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## class: DESeqDataSet 
+## dim: 82 6 
+## metadata(1): version
+## assays(1): counts
+## rownames(82): FBgn0002521 FBgn0004607 ... FBgn0259214 FBgn0259216
+## rowData names(0):
+## colnames(6): g1_01 g1_02 ... g3_02 g3_03
+## colData names(1): condition
+\end{verbatim}
+
+\subsection{Anotación}\label{anotaciuxf3n}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Conectar al mirror Asia de Ensembl con el dataset de Drosophila}
+\NormalTok{mart }\OtherTok{\textless{}{-}} \FunctionTok{useMart}\NormalTok{(}
+  \AttributeTok{biomart =} \StringTok{"ensembl"}\NormalTok{,}
+  \AttributeTok{dataset =} \StringTok{"dmelanogaster\_gene\_ensembl"}\NormalTok{,}
+  \AttributeTok{host =} \StringTok{"https://asia.ensembl.org"}
+\NormalTok{)}
+
+\CommentTok{\# Revisar filtros disponibles}
+\FunctionTok{head}\NormalTok{(}\FunctionTok{listFilters}\NormalTok{(mart))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              name              description
+## 1 chromosome_name Chromosome/scaffold name
+## 2           start                    Start
+## 3             end                      End
+## 4      band_start               Band Start
+## 5        band_end                 Band End
+## 6          strand                   Strand
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grep}\NormalTok{(}\StringTok{"ensembl"}\NormalTok{, }\FunctionTok{listFilters}\NormalTok{(mart)[,}\DecValTok{1}\NormalTok{], }\AttributeTok{value=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "with_ensembl_metazoa"  "ensembl_gene_id"       "ensembl_transcript_id"
+## [4] "ensembl_peptide_id"    "ensembl_exon_id"       "ensembl_metazoa"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Atributos deseados}
+\NormalTok{attributes }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \StringTok{\textquotesingle{}ensembl\_gene\_id\textquotesingle{}}\NormalTok{,          }\CommentTok{\# ID interno}
+  \StringTok{\textquotesingle{}external\_gene\_name\textquotesingle{}}\NormalTok{,       }\CommentTok{\# Nombre común (símbolo)}
+  \StringTok{\textquotesingle{}chromosome\_name\textquotesingle{}}\NormalTok{,}
+  \StringTok{\textquotesingle{}start\_position\textquotesingle{}}\NormalTok{,}
+  \StringTok{\textquotesingle{}end\_position\textquotesingle{}}\NormalTok{,}
+  \StringTok{\textquotesingle{}description\textquotesingle{}}
+\NormalTok{)}
+
+\CommentTok{\# Lista de genes en la matriz de conteo}
+\NormalTok{gene\_ids }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(}\FunctionTok{counts}\NormalTok{(dds))}
+
+\CommentTok{\# Obtener la anotación desde Ensembl}
+\NormalTok{annot }\OtherTok{\textless{}{-}} \FunctionTok{getBM}\NormalTok{(}
+  \AttributeTok{attributes =}\NormalTok{ attributes,}
+  \AttributeTok{filters =} \StringTok{\textquotesingle{}ensembl\_gene\_id\textquotesingle{}}\NormalTok{,}
+  \AttributeTok{values =}\NormalTok{ gene\_ids,}
+  \AttributeTok{mart =}\NormalTok{ mart}
+\NormalTok{)}
+
+\CommentTok{\# Verificar anotación}
+\FunctionTok{dim}\NormalTok{(annot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 76  6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(annot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   ensembl_gene_id external_gene_name chromosome_name start_position
+## 1     FBgn0002521                pho               4        1172469
+## 2     FBgn0004607               zfh2               4         501810
+## 3     FBgn0004859                 ci               4          47710
+## 4     FBgn0005558                 ey               4         697689
+## 5     FBgn0005561                 sv               4        1088798
+## 6     FBgn0005666                 bt               4         724400
+##   end_position             description
+## 1      1181628           pleiohomeotic
+## 2       540874 Zn finger homeodomain 2
+## 3        57041     cubitus interruptus
+## 4       721173                 eyeless
+## 5      1113317                  shaven
+## 6       776474                    bent
+\end{verbatim}
+
+\subsection{Análisis de expresión
+diferencial}\label{anuxe1lisis-de-expresiuxf3n-diferencial}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dds }\OtherTok{\textless{}{-}} \FunctionTok{DESeq}\NormalTok{(dds)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## estimating size factors
+\end{verbatim}
+
+\begin{verbatim}
+## estimating dispersions
+\end{verbatim}
+
+\begin{verbatim}
+## gene-wise dispersion estimates
+\end{verbatim}
+
+\begin{verbatim}
+## mean-dispersion relationship
+\end{verbatim}
+
+\begin{verbatim}
+## -- note: fitType='parametric', but the dispersion trend was not well captured by the
+##    function: y = a/x + b, and a local regression fit was automatically substituted.
+##    specify fitType='local' or 'mean' to avoid this message next time.
+\end{verbatim}
+
+\begin{verbatim}
+## final dispersion estimates
+\end{verbatim}
+
+\begin{verbatim}
+## fitting model and testing
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res }\OtherTok{\textless{}{-}} \FunctionTok{results}\NormalTok{(dds, }\AttributeTok{contrast =} \FunctionTok{c}\NormalTok{(}\StringTok{"condition"}\NormalTok{, }\StringTok{"g3"}\NormalTok{, }\StringTok{"g1"}\NormalTok{))}
+\FunctionTok{summary}\NormalTok{(res)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## out of 82 with nonzero total read count
+## adjusted p-value < 0.1
+## LFC > 0 (up)       : 1, 1.2%
+## LFC < 0 (down)     : 7, 8.5%
+## outliers [1]       : 0, 0%
+## low counts [2]     : 0, 0%
+## (mean count < 3)
+## [1] see 'cooksCutoff' argument of ?results
+## [2] see 'independentFiltering' argument of ?results
+\end{verbatim}
+
+\subsection{Ajustar modelo estadístico
+DESeq2}\label{ajustar-modelo-estaduxedstico-deseq2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dds\_2 }\OtherTok{\textless{}{-}} \FunctionTok{DESeq}\NormalTok{(dds)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## using pre-existing size factors
+\end{verbatim}
+
+\begin{verbatim}
+## estimating dispersions
+\end{verbatim}
+
+\begin{verbatim}
+## found already estimated dispersions, replacing these
+\end{verbatim}
+
+\begin{verbatim}
+## gene-wise dispersion estimates
+\end{verbatim}
+
+\begin{verbatim}
+## mean-dispersion relationship
+\end{verbatim}
+
+\begin{verbatim}
+## -- note: fitType='parametric', but the dispersion trend was not well captured by the
+##    function: y = a/x + b, and a local regression fit was automatically substituted.
+##    specify fitType='local' or 'mean' to avoid this message next time.
+\end{verbatim}
+
+\begin{verbatim}
+## final dispersion estimates
+\end{verbatim}
+
+\begin{verbatim}
+## fitting model and testing
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Calcular conteo normalizado (transformación log2); + 1}
+\NormalTok{norm\_counts }\OtherTok{\textless{}{-}} \FunctionTok{log2}\NormalTok{(}\FunctionTok{counts}\NormalTok{(dds\_2, }\AttributeTok{normalized =} \ConstantTok{TRUE}\NormalTok{)}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\#Agregar anotación}
+\NormalTok{norm\_counts\_symbols }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{ID=}\FunctionTok{rownames}\NormalTok{(norm\_counts), norm\_counts, }\AttributeTok{check.names=}\ConstantTok{FALSE}\NormalTok{), annot, }\AttributeTok{by.x=}\StringTok{"ID"}\NormalTok{, }\AttributeTok{by.y=}\StringTok{"ensembl\_gene\_id"}\NormalTok{, }\AttributeTok{all=}\NormalTok{F)}
+
+\CommentTok{\#Escribir recuentos normalizados en un archivo}
+\FunctionTok{write.table}\NormalTok{(norm\_counts\_symbols, }\StringTok{"expresion\_diferencial/normalized\_counts\_log2\_star.txt"}\NormalTok{, }\AttributeTok{quote=}\NormalTok{F, }\AttributeTok{col.names=}\NormalTok{T, }\AttributeTok{row.names=}\NormalTok{F, }\AttributeTok{sep=}\StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Análisis de expresión
+diferencial}\label{anuxe1lisis-de-expresiuxf3n-diferencial-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Chequeo de nombre de resultados.}
+\FunctionTok{resultsNames}\NormalTok{(dds\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Intercept"          "condition_g3_vs_g1"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Extraer resultados para g3 vs g1}
+\NormalTok{de }\OtherTok{\textless{}{-}} \FunctionTok{results}\NormalTok{(}\AttributeTok{object =}\NormalTok{ dds\_2, }\AttributeTok{contrast=}\FunctionTok{c}\NormalTok{(}\StringTok{"condition"}\NormalTok{, }\StringTok{"g3"}\NormalTok{, }\StringTok{"g1"}\NormalTok{))}
+
+\CommentTok{\#Chequeo de filas}
+\FunctionTok{head}\NormalTok{(de)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## log2 fold change (MLE): condition g3 vs g1 
+## Wald test p-value: condition g3 vs g1 
+## DataFrame with 6 rows and 6 columns
+##              baseMean log2FoldChange     lfcSE       stat    pvalue      padj
+##             <numeric>      <numeric> <numeric>  <numeric> <numeric> <numeric>
+## FBgn0002521  232.6968      0.0637448 0.1343589  0.4744371  0.635188  0.953284
+## FBgn0004607  421.1440     -0.0573475 0.1475062 -0.3887801  0.697439  0.953284
+## FBgn0004624  598.4535     -0.0539189 0.0969169 -0.5563412  0.577978  0.953284
+## FBgn0004859  661.9061      0.0932887 0.1287223  0.7247281  0.468619  0.953284
+## FBgn0005558   32.5313     -0.0184892 0.3624576 -0.0510107  0.959317  0.970137
+## FBgn0005561   47.3115     -0.3320644 0.3006411 -1.1045209  0.269367  0.953284
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Agregar la anotación}
+\NormalTok{de\_symbols }\OtherTok{\textless{}{-}} \FunctionTok{merge}\NormalTok{(}\FunctionTok{data.frame}\NormalTok{(}\AttributeTok{ID=}\FunctionTok{rownames}\NormalTok{(de), de, }\AttributeTok{check.names=}\ConstantTok{FALSE}\NormalTok{), annot, }\AttributeTok{by.x=}\StringTok{"ID"}\NormalTok{, }\AttributeTok{by.y=}\StringTok{"ensembl\_gene\_id"}\NormalTok{, }\AttributeTok{all=}\NormalTok{F)}
+
+\CommentTok{\#Escribir los resultados de expresión diferencial en el archivo}
+\FunctionTok{write.table}\NormalTok{(de\_symbols, }\StringTok{"expresion\_diferencial/deseq2\_results.txt"}\NormalTok{, }\AttributeTok{quote=}\NormalTok{F, }\AttributeTok{col.names=}\NormalTok{T, }\AttributeTok{row.names=}\NormalTok{F, }\AttributeTok{sep=}\StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Selección de Genes}\label{selecciuxf3n-de-genes}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Cuantos genes están expresados diferencialmente}
+\NormalTok{de\_select }\OtherTok{\textless{}{-}}\NormalTok{ de\_symbols[de\_symbols}\SpecialCharTok{$}\NormalTok{pvalue }\SpecialCharTok{\textless{}} \FloatTok{0.05} \SpecialCharTok{\&} \SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(de\_symbols}\SpecialCharTok{$}\NormalTok{pvalue) }\SpecialCharTok{\&} \FunctionTok{abs}\NormalTok{(de\_symbols}\SpecialCharTok{$}\NormalTok{log2FoldChange) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{,]}
+
+\FunctionTok{write.table}\NormalTok{(de\_select, }\StringTok{"expresion\_diferencial/deseq2\_selection.txt"}\NormalTok{, }\AttributeTok{quote=}\NormalTok{F, }\AttributeTok{col.names=}\NormalTok{T, }\AttributeTok{row.names=}\NormalTok{F, }\AttributeTok{sep=}\StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{)}
+
+\CommentTok{\#Consultar si todos están expresados diferencialmente}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Visualización - Volcano
+Plot}\label{visualizaciuxf3n---volcano-plot}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Transformar los recuentos sin procesar para poder visualizar los datos}
+\NormalTok{se\_rlog }\OtherTok{\textless{}{-}} \FunctionTok{rlog}\NormalTok{(dds\_2)}
+
+\CommentTok{\# Correlación de muestras}
+
+\CommentTok{\#Calcular la matriz de distancia entre muestras}
+\NormalTok{sampleDistMatrix }\OtherTok{\textless{}{-}} \FunctionTok{as.matrix}\NormalTok{(}\FunctionTok{dist}\NormalTok{(}\FunctionTok{t}\NormalTok{(}\FunctionTok{assay}\NormalTok{(se\_rlog))))}
+
+\CommentTok{\# La función vst() intenta hacer una estimación más robusta de la dispersión usando un subconjunto de genes (nsub = 1000).}
+
+\CommentTok{\# Como trabajamos coon muy pocos genes, se usa varianceStabilizingTransformation, ya que no intenta seleccionar un subconjunto de genes.}
+
+\NormalTok{vsd }\OtherTok{\textless{}{-}} \FunctionTok{varianceStabilizingTransformation}\NormalTok{(dds, }\AttributeTok{blind =} \ConstantTok{FALSE}\NormalTok{)}
+
+
+\CommentTok{\# Heatmap de distancias}
+\FunctionTok{pheatmap}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(sampleDistMatrix),}
+         \AttributeTok{labels\_col =}\NormalTok{ coldata}\SpecialCharTok{$}\NormalTok{condition,}
+         \AttributeTok{main =} \StringTok{"Heatmap de distancias entre muestras"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{expresion_diferencial_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# PCA}
+\FunctionTok{plotPCA}\NormalTok{(vsd, }\AttributeTok{intgroup =} \StringTok{"condition"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## using ntop=500 top features by variance
+\end{verbatim}
+
+\includegraphics{expresion_diferencial_files/figure-latex/unnamed-chunk-11-2.pdf}
+\#\# Volcano plot
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Crear copia del data frame anotado para trabajar}
+\NormalTok{volcano\_data }\OtherTok{\textless{}{-}}\NormalTok{ de\_symbols}
+
+\CommentTok{\# Clasificar genes según expresión diferencial}
+\NormalTok{volcano\_data}\SpecialCharTok{$}\NormalTok{diffexpressed }\OtherTok{\textless{}{-}} \StringTok{"NO"}
+\NormalTok{volcano\_data}\SpecialCharTok{$}\NormalTok{diffexpressed[volcano\_data}\SpecialCharTok{$}\NormalTok{log2FoldChange }\SpecialCharTok{\textgreater{}} \DecValTok{0} \SpecialCharTok{\&}\NormalTok{ volcano\_data}\SpecialCharTok{$}\NormalTok{pvalue }\SpecialCharTok{\textless{}} \FloatTok{0.05}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"UP"}
+\NormalTok{volcano\_data}\SpecialCharTok{$}\NormalTok{diffexpressed[volcano\_data}\SpecialCharTok{$}\NormalTok{log2FoldChange }\SpecialCharTok{\textless{}} \DecValTok{0} \SpecialCharTok{\&}\NormalTok{ volcano\_data}\SpecialCharTok{$}\NormalTok{pvalue }\SpecialCharTok{\textless{}} \FloatTok{0.05}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"DOWN"}
+
+\CommentTok{\# Etiquetar genes significativos con nombre externo}
+\NormalTok{volcano\_data}\SpecialCharTok{$}\NormalTok{delabel }\OtherTok{\textless{}{-}} \ConstantTok{NA}
+\NormalTok{volcano\_data}\SpecialCharTok{$}\NormalTok{delabel[volcano\_data}\SpecialCharTok{$}\NormalTok{diffexpressed }\SpecialCharTok{!=} \StringTok{"NO"}\NormalTok{] }\OtherTok{\textless{}{-}}\NormalTok{ volcano\_data}\SpecialCharTok{$}\NormalTok{external\_gene\_name[volcano\_data}\SpecialCharTok{$}\NormalTok{diffexpressed }\SpecialCharTok{!=} \StringTok{"NO"}\NormalTok{]}
+
+
+\CommentTok{\# Volcano plot}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ volcano\_data,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ log2FoldChange,}
+           \AttributeTok{y =} \SpecialCharTok{{-}}\FunctionTok{log10}\NormalTok{(pvalue),}
+           \AttributeTok{color =}\NormalTok{ diffexpressed,}
+           \AttributeTok{label =}\NormalTok{ delabel)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_text\_repel}\NormalTok{(}\AttributeTok{max.overlaps =} \DecValTok{10}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{, }\StringTok{"black"}\NormalTok{, }\StringTok{"red"}\NormalTok{)) }\SpecialCharTok{+}  \CommentTok{\# DOWN, NO, UP}
+  \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{0.0}\NormalTok{, }\FloatTok{0.0}\NormalTok{), }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_hline}\NormalTok{(}\AttributeTok{yintercept =} \SpecialCharTok{{-}}\FunctionTok{log10}\NormalTok{(}\FloatTok{0.05}\NormalTok{), }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}
+    \AttributeTok{x =} \StringTok{"log2 Fold Change"}\NormalTok{,}
+    \AttributeTok{y =} \StringTok{"{-}log10(p{-}value)"}\NormalTok{,}
+    \AttributeTok{title =} \StringTok{"Volcano Plot"}\NormalTok{,}
+    \AttributeTok{subtitle =} \StringTok{"Genes diferencialmente expresados entre g3 (3g) y g1 (1g)"}\NormalTok{,}
+    \AttributeTok{caption =} \StringTok{"Análisis RNA{-}seq con DESeq2"}\NormalTok{,}
+    \AttributeTok{color =} \StringTok{"Expresión"}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}
+    \AttributeTok{legend.position =} \StringTok{"bottom"}\NormalTok{,}
+    \AttributeTok{plot.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{face =} \StringTok{"bold"}\NormalTok{),}
+    \AttributeTok{plot.subtitle =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{),}
+    \AttributeTok{panel.border =} \FunctionTok{element\_rect}\NormalTok{(}\AttributeTok{colour =} \StringTok{"black"}\NormalTok{, }\AttributeTok{fill =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{linewidth =} \DecValTok{1}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 67 rows containing missing values or values outside the scale range
+## (`geom_text_repel()`).
+\end{verbatim}
+
+\includegraphics{expresion_diferencial_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\subsection{Enriquecimiento funcional con
+enrichR}\label{enriquecimiento-funcional-con-enrichr}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(enrichR)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Welcome to enrichR
+## Checking connections ...
+\end{verbatim}
+
+\begin{verbatim}
+## Enrichr ... Connection is Live!
+## FlyEnrichr ... Connection is Live!
+## WormEnrichr ... Connection is Live!
+## YeastEnrichr ... Connection is Live!
+## FishEnrichr ... Connection is Live!
+## OxEnrichr ... Connection is Live!
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Verificar bases de datos disponibles}
+\NormalTok{dbs }\OtherTok{\textless{}{-}} \FunctionTok{listEnrichrDbs}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{selección de genes}\label{selecciuxf3n-de-genes-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Genes significativos con log2FC \textgreater{} 0.5 y pvalue \textless{} 0.05}
+\NormalTok{genes\_degs }\OtherTok{\textless{}{-}}\NormalTok{ de\_select }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(pvalue), pvalue }\SpecialCharTok{\textless{}} \FloatTok{0.05}\NormalTok{, }\FunctionTok{abs}\NormalTok{(log2FoldChange) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pull}\NormalTok{(external\_gene\_name) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{unique}\NormalTok{()}
+
+\CommentTok{\# Convertir nombres de genes}
+\CommentTok{\# Conectar a Ensembl Drosophila}
+\NormalTok{mart }\OtherTok{\textless{}{-}} \FunctionTok{useMart}\NormalTok{(}
+  \AttributeTok{biomart =} \StringTok{"ensembl"}\NormalTok{,}
+  \AttributeTok{dataset =} \StringTok{"dmelanogaster\_gene\_ensembl"}\NormalTok{,}
+  \AttributeTok{host =} \StringTok{"https://asia.ensembl.org"}
+\NormalTok{)}
+
+\CommentTok{\# Obtener FlyBase IDs correspondientes}
+\NormalTok{conversion }\OtherTok{\textless{}{-}} \FunctionTok{getBM}\NormalTok{(}
+  \AttributeTok{attributes =} \FunctionTok{c}\NormalTok{(}\StringTok{"external\_gene\_name"}\NormalTok{, }\StringTok{"flybase\_gene\_id"}\NormalTok{),}
+  \AttributeTok{filters =} \StringTok{"external\_gene\_name"}\NormalTok{,}
+  \AttributeTok{values =}\NormalTok{ genes\_degs,}
+  \AttributeTok{mart =}\NormalTok{ mart}
+\NormalTok{)}
+
+\NormalTok{conversion}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   external_gene_name flybase_gene_id
+## 1                Gat     FBgn0039915
+## 2                NfI     FBgn0042696
+## 3               Syt7     FBgn0039900
+## 4            CG33521     FBgn0250819
+## 5           yellow-h     FBgn0039896
+## 6                 bt     FBgn0005666
+## 7              ND-49     FBgn0039909
+## 8              CaMKI     FBgn0016126
+## 9         ATPsynbeta     FBgn0010217
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Usar los FlyBase IDs}
+\NormalTok{genes\_fbgn }\OtherTok{\textless{}{-}}\NormalTok{ conversion}\SpecialCharTok{$}\NormalTok{flybase\_gene\_id}
+
+\CommentTok{\# Enriquecimiento con base específica de Drosophila}
+\NormalTok{results\_flybase }\OtherTok{\textless{}{-}} \FunctionTok{enrichr}\NormalTok{(genes\_fbgn, }\AttributeTok{databases =} \FunctionTok{c}\NormalTok{(}\StringTok{"GO\_Biological\_Process\_2024, GO\_Cellular\_Component\_2024, GO\_Molecular\_Function\_2024"}\NormalTok{, }\StringTok{"KEGG\_2016"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Uploading data to Enrichr... Done.
+##   Querying GO_Biological_Process_2024, GO_Cellular_Component_2024, GO_Molecular_Function_2024... Done.
+##   Querying KEGG_2016... Done.
+## Parsing results... Done.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(results\_flybase[[}\DecValTok{1}\NormalTok{]])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Term                 Overlap              P.value             
+## [4] Adjusted.P.value     Old.P.value          Old.Adjusted.P.value
+## [7] Odds.Ratio           Combined.Score       Genes               
+## <0 rows> (o 0- extensión row.names)
+\end{verbatim}
+
+\end{document}
